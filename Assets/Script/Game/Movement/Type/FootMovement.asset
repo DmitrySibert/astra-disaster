@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: FootMovement
   m_EditorClassIdentifier: 
   typeName: Foot
-  upRate: 1
-  downRate: 1
-  rightRate: 1
-  leftRate: 1
+  rate: {x: 1, y: 1}

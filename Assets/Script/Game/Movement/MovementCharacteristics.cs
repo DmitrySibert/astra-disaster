@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class MovementCharacteristics : MonoBehaviour
 {
     public MovementType type;
-    public int velocity;
-    public int acceleration;
+    public float maxVelocity;
+    public float accel;
+    public Vector2 currentVelocity;
+    public Vector2 currentAccel;
+    public Dictionary<string, MovementEffect> effects = new Dictionary<string, MovementEffect>();
 }

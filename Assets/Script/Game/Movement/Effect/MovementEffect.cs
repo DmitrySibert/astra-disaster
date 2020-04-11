@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class MovementEffect : MonoBehaviour
+﻿
+public abstract class MovementEffect
 {
-    public abstract float GetResistance();
+    public abstract float GetDeceleration();
 }

@@ -6,9 +6,4 @@ using UnityEngine;
 public class MovementType : ScriptableObject
 {
     public string typeName;
-    //slowleness for directions
-    public float upRate;
-    public float downRate;
-    public float rightRate;
-    public float leftRate;
 }
