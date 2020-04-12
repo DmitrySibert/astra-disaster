@@ -8,7 +8,7 @@ public class MovementSystem : MonoBehaviour
     private const string ID_KEY = "id";
     private const string DIRECTION_KEY = "direction";
     private const string FOOT_MOVEMENT_NAME = "Foot";
-    private const string STAIRS_MOVEMENT_NAME = "Stairs";
+    private const string ZERO_GRAVITY_MOVEMENT_NAME = "ZeroGravity";
 
     private Dictionary<int, GameObject> m_movingObjects;
     private Dictionary<string, IMovementStrategy> m_movementStrategies;
@@ -20,6 +20,7 @@ public class MovementSystem : MonoBehaviour
         m_movingObjects = new Dictionary<int, GameObject>();
         m_movementStrategies = new Dictionary<string, IMovementStrategy>();
         m_movementStrategies[FOOT_MOVEMENT_NAME] = new FootMovementStrategy();
+        m_movementStrategies[ZERO_GRAVITY_MOVEMENT_NAME] = new ZeroGravityMovementStrategy();
     }
 
     void Update()
@@ -35,28 +36,6 @@ public class MovementSystem : MonoBehaviour
             MovementCharacteristics characteristics = go.GetComponent<MovementCharacteristics>();
             m_movementStrategies[characteristics.type.typeName].Update(go, Time.deltaTime);
         }
-    }
-
-    private void ClampToMaxSpeed(GameObject go) 
-    {
-        // Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
-        // MovementCharacteristics characteristics = go.GetComponent<MovementCharacteristics>();
-        // if(rb.velocity.magnitude > characteristics.maxVelocity)
-        // {
-        //     rb.velocity = Vector2.ClampMagnitude(rb.velocity, characteristics.maxVelocity);
-        // }
-    }
-
-    private void ApplyEffects(GameObject go)
-    {
-        // MovementEffect[] movementEffects = go.GetComponents<MovementEffect>();
-        // Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
-        // foreach(var movementEffect in movementEffects)
-        // {
-        //     float affectedVelocity = rb.velocity.magnitude - movementEffect.GetResistance() * Time.deltaTime;
-        //     affectedVelocity = affectedVelocity > 0 ? affectedVelocity : 0;
-        //     rb.velocity = Vector2.ClampMagnitude(rb.velocity, affectedVelocity);
-        // }
     }
 
     private void HandleEvent()
