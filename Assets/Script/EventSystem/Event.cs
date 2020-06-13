@@ -29,11 +29,6 @@ public class Event {
         set { data = value; }
     }
 
-    public static Event NewNull()
-    {
-        return NullEvent.Instance();
-    }
-
     public override bool Equals(object obj)
     {
         var @event = obj as Event;

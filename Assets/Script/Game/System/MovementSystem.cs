@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MovementSystem : MonoBehaviour
 {
-    private const string MOVE_EVENT_NAME = "move";
-    private const string ID_KEY = "id";
-    private const string DIRECTION_KEY = "direction";
     private const string FOOT_MOVEMENT_NAME = "Foot";
     private const string ZERO_GRAVITY_MOVEMENT_NAME = "ZeroGravity";
 
@@ -34,7 +31,7 @@ public class MovementSystem : MonoBehaviour
         foreach(var go in m_movingObjects.Values)
         {
             MovementCharacteristics characteristics = go.GetComponent<MovementCharacteristics>();
-            m_movementStrategies[characteristics.type.typeName].Update(go, Time.deltaTime);
+            m_movementStrategies[characteristics.type.typeName].Move(go, Time.deltaTime);
         }
     }
 
@@ -43,17 +40,7 @@ public class MovementSystem : MonoBehaviour
         if (dispatcher.IsEmpty()) {
             return;
         }
-        Event evt = dispatcher.ReceiveEvent();
-        GameObject go;
-        if (evt.Name.Equals(MOVE_EVENT_NAME)) {
-            int goId = evt.Data.Get<int>(ID_KEY);
-            bool isRegistred = m_movingObjects.TryGetValue(goId, out go);
-            if (!isRegistred) {
-                return;
-            }
-            MovementCharacteristics characteristics = go.GetComponent<MovementCharacteristics>();
-            m_movementStrategies[characteristics.type.typeName].Move(characteristics, go, evt.Data);
-        }      
+        Event evt = dispatcher.ReceiveEvent();     
     }
 
     public void RegisterGameObject(int id, GameObject go)
