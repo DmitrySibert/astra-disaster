@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79136fa813e695446acf10974d9e2dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gravityStrength: 0.5
+  effectPower: 0.5
 --- !u!61 &1682559664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad30cb7471c04c4688b30ab676b61b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: {fileID: 11400000, guid: 5e3264599b8edef43adb59d912213e04, type: 2}
+  type: {fileID: 11400000, guid: 1ef0d9b6ba9cb9f4b9184a81971bec6c, type: 2}
   maxVelocity: 10
   accel: 8
   direction: {x: 0, y: 0}

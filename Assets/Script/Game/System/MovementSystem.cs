@@ -15,9 +15,12 @@ public class MovementSystem : MonoBehaviour
     {
         dispatcher = GetComponent<Dispatcher>();
         m_movingObjects = new Dictionary<int, GameObject>();
-        m_movementStrategies = new Dictionary<string, IMovementStrategy>();
-        m_movementStrategies[FOOT_MOVEMENT_NAME] = new FootMovementStrategy();
-        m_movementStrategies[ZERO_GRAVITY_MOVEMENT_NAME] = new ZeroGravityMovementStrategy();
+        m_movementStrategies = new Dictionary<string, IMovementStrategy>
+        {
+            [FOOT_MOVEMENT_NAME] = new FootMovementStrategy(),
+            [ZERO_GRAVITY_MOVEMENT_NAME] = new ZeroGravityMovementStrategy()
+        };
+        Debug.Log("Movement System: initialized");
     }
 
     void Update()

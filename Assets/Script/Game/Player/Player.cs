@@ -13,11 +13,6 @@ public class Player : MonoBehaviour
         movementSystem.RegisterGameObject(GetId(), this.gameObject);
     }
 
-    void Update()
-    {
-        
-    }
-
     public int GetId() 
     {
         return id;

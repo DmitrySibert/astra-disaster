@@ -9,5 +9,5 @@ public class MovementCharacteristics : MonoBehaviour
     public float accel;
     public Vector2 direction;
     public Vector2 currentAccel;
-    public Dictionary<string, MovementEffect> effects = new Dictionary<string, MovementEffect>();
+    public Dictionary<GameEffects, MovementEffect> effects = new Dictionary<GameEffects, MovementEffect>();
 }

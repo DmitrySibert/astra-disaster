@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectProducer : MonoBehaviour
+public class MovementTypeSwitch : MonoBehaviour
 {
     [SerializeField]
     private MovementType m_producedType;

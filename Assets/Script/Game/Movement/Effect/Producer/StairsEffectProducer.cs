@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DecelerationEffectProducer : MonoBehaviour
+public class StairsEffectProducer : MonoBehaviour
 {
     [SerializeField]
-    private float m_gravityStrength;
-    private string m_effectName;
-    private StairsDeceleration m_stairsDeceleration;
+    private float effectPower;
+    private StairsDeceleration stairsDeceleration;
 
     void Start()
     {
-        m_stairsDeceleration = new StairsDeceleration(0.5f);
-        m_effectName = "StairsMovement";
+        stairsDeceleration = new StairsDeceleration(effectPower);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         MovementCharacteristics moveChars = col.gameObject.GetComponent<MovementCharacteristics>();
         if (moveChars != null) {
-            moveChars.effects[m_effectName] = m_stairsDeceleration;
+            moveChars.effects[GameEffects.STAIRS] = stairsDeceleration;
         }
     }
 
@@ -27,7 +25,7 @@ public class DecelerationEffectProducer : MonoBehaviour
     {
         MovementCharacteristics moveChars = col.gameObject.GetComponent<MovementCharacteristics>();
         if (moveChars != null) {
-            moveChars.effects.Remove(m_effectName);
+            moveChars.effects.Remove(GameEffects.STAIRS);
         }
     }
 }
