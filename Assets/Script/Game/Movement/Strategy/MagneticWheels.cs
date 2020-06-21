@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FootMovementStrategy : IMovementStrategy
+public class MagneticWheels : IMovementStrategy
 {
     public void Move(GameObject go, float deltaTime)
     {

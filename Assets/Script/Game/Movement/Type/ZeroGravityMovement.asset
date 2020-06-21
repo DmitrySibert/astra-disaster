@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa37b49fea079844a4d778b50292d8c, type: 3}
   m_Name: ZeroGravityMovement
   m_EditorClassIdentifier: 
-  typeName: ZeroGravity
+  typeName: 2

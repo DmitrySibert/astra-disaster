@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class MovementSystem : MonoBehaviour
 {
-    private const string FOOT_MOVEMENT_NAME = "Foot";
-    private const string ZERO_GRAVITY_MOVEMENT_NAME = "ZeroGravity";
-
     private Dictionary<int, GameObject> m_movingObjects;
-    private Dictionary<string, IMovementStrategy> m_movementStrategies;
+    private Dictionary<MovementTypeName, IMovementStrategy> m_movementStrategies;
     private Dispatcher dispatcher;
 
-    void Start()
+    private void Awake()
     {
         dispatcher = GetComponent<Dispatcher>();
         m_movingObjects = new Dictionary<int, GameObject>();
-        m_movementStrategies = new Dictionary<string, IMovementStrategy>
+        m_movementStrategies = new Dictionary<MovementTypeName, IMovementStrategy>
         {
-            [FOOT_MOVEMENT_NAME] = new FootMovementStrategy(),
-            [ZERO_GRAVITY_MOVEMENT_NAME] = new ZeroGravityMovementStrategy()
+            [MovementTypeName.FOOT] = new Foot(),
+            [MovementTypeName.ZERO_GRAVITY] = new ZeroGravity(),
+            [MovementTypeName.MAGNETIC_WHEELS] = new MagneticWheels(),
         };
-        Debug.Log("Movement System: initialized");
     }
 
     void Update()
@@ -49,5 +46,10 @@ public class MovementSystem : MonoBehaviour
     public void RegisterGameObject(int id, GameObject go)
     {
         m_movingObjects.Add(id, go);
+    }
+
+    public void UnregisterGameObject(int id)
+    {
+        m_movingObjects.Remove(id);
     }
 }

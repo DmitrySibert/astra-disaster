@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZeroGravityMovementStrategy : IMovementStrategy
+public class ZeroGravity : IMovementStrategy
 {
     public void Move(GameObject go, float deltaTime)
     {

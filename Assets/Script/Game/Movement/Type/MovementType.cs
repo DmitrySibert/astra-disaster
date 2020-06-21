@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New movement type", menuName = "Movement/Type")]
 public class MovementType : ScriptableObject
 {
-    public string typeName;
+    public MovementTypeName typeName;
 }

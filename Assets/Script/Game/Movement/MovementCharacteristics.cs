@@ -10,4 +10,17 @@ public class MovementCharacteristics : MonoBehaviour
     public Vector2 direction;
     public Vector2 currentAccel;
     public Dictionary<GameEffects, MovementEffect> effects = new Dictionary<GameEffects, MovementEffect>();
+
+    private MovementSystem movementSystem;
+
+    private void Start()
+    {
+        movementSystem = FindObjectOfType<MovementSystem>();
+        movementSystem.RegisterGameObject(gameObject.GetInstanceID(), gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        movementSystem.UnregisterGameObject(gameObject.GetInstanceID());
+    }
 }

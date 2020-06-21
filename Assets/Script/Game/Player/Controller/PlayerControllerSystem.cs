@@ -8,7 +8,7 @@ public class PlayerControllerSystem : MonoBehaviour
     private Dispatcher dispatcher;
     private Dictionary<string, Vector2> primitiveDirection;
 
-    void Start()
+    private void Awake()
     {
         dispatcher = GetComponent<Dispatcher>();
         primitiveDirection = new Dictionary<string, Vector2>
@@ -19,6 +19,12 @@ public class PlayerControllerSystem : MonoBehaviour
             [KeyboardController.ARROW_RIGHT] = Vector2.right
         };
         playerMovementCharacteristics = FindObjectOfType<Player>().GetComponent<MovementCharacteristics>();
+        
+        
+    }
+
+    void Start()
+    {
         Debug.Assert(playerMovementCharacteristics != null);
         Debug.Log("Player controller System: initialized");
     }
