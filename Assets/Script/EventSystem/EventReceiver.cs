@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Single event receiver contains all input events of an object
+/// </summary>
 public class EventReceiver {
 
     private Queue<Event> m_events;

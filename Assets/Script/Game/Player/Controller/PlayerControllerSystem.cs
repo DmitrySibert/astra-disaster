@@ -19,8 +19,6 @@ public class PlayerControllerSystem : MonoBehaviour
             [KeyboardController.ARROW_RIGHT] = Vector2.right
         };
         playerMovementCharacteristics = FindObjectOfType<Player>().GetComponent<MovementCharacteristics>();
-        
-        
     }
 
     void Start()

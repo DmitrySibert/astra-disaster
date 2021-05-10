@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Event bus dispatches all events between all event receivers
+/// </summary>
 public class EventBus : MonoBehaviour {
 
     public static EventBus instance;

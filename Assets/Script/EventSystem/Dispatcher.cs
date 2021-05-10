@@ -1,6 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Dispatcher component. 
+/// Dispatch input\output events of an attached GameObject
+/// </summary>
 public class Dispatcher : MonoBehaviour
 {
     [SerializeField]

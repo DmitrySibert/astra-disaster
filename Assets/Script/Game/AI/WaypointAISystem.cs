@@ -21,23 +21,37 @@ public class WaypointAISystem : MonoBehaviour
         foreach(GameObject go in ais.Values) {
             WaypointAI ai = go.GetComponent<WaypointAI>();
             MovementCharacteristics movementCharacteristics = go.GetComponent<MovementCharacteristics>();
-            if (ai.waypoints.Count == 0) {
-                movementCharacteristics.direction = Vector2.zero;
-                return;
-            }
-            Vector2 goalPoint = ai.waypoints[0];
+            Transform targetPoint = ai.way[ai.target];
             Transform transform = go.GetComponent<Transform>();
-            if (IsGetCurrentPoint(transform, goalPoint)) {
-                ai.waypoints.RemoveAt(0);
+            if (IsArriveTargetPoint(transform, targetPoint)) {
+                HandleTargetPointArrival(ai, movementCharacteristics);
             }
-            movementCharacteristics.direction = (goalPoint - (Vector2)transform.position).normalized;
+            movementCharacteristics.direction = (targetPoint.position - transform.position).normalized;
         }
     }
 
-    private bool IsGetCurrentPoint(Transform transform, Vector2 point)
+    private void HandleTargetPointArrival(WaypointAI ai, MovementCharacteristics movementCharacteristics) {
+        if (ai.way.Count - 1 == ai.target) {
+            if (WaypointAIMovementType.REVERSE == ai.type) {
+                ai.way.Reverse();
+                ai.target = 0;
+            }
+            if (WaypointAIMovementType.CYCLE == ai.type) {
+                ai.target = 0;
+            }
+            if (WaypointAIMovementType.SINGLE == ai.type) {
+                movementCharacteristics.direction = Vector2.zero;
+                return;
+            }
+        } else {
+            ++ai.target;
+        }
+    }
+
+    private bool IsArriveTargetPoint(Transform transform, Transform point)
     {
-        float distance = Vector2.Distance(point, transform.position);
-        return distance < 1f;
+        float distance = Vector2.Distance(point.position, transform.position);
+        return distance < 0.3f;
     }
 
     public void RegisterGameObject(int id, GameObject go)

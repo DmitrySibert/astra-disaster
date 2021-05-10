@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// A pool for event instances
+/// </summary>
 public class EventPool {
 
     private Dictionary<string, Func<Event>> m_evtCreators;

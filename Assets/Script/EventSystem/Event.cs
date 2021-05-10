@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// An event
+/// </summary>
 public class Event {
 
     private string name;

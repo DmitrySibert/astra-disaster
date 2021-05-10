@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        MovementSystem movementSystem = FindObjectOfType<MovementSystem>();
-        movementSystem.RegisterGameObject(GetId(), this.gameObject);
     }
 
     public int GetId() 
