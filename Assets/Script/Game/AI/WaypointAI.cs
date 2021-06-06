@@ -15,10 +15,17 @@ public class WaypointAI : MonoBehaviour
 
     public List<Transform> way;
 
+    private WaypointAISystem waypointAISystem;
+
     private void Start()
     {
-        WaypointAISystem waypointAISystem = FindObjectOfType<WaypointAISystem>();
+        waypointAISystem = FindObjectOfType<WaypointAISystem>();
         waypointAISystem.RegisterGameObject(gameObject.GetInstanceID(), gameObject);
         way = new List<Transform>(wayPrototype.points);
+    }
+
+    private void OnDestroy()
+    {
+        waypointAISystem.UnregisterGameObject(gameObject.GetInstanceID());
     }
 }
